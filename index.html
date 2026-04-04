@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Space — Dashboard</title>
+<meta name="description" content="Personal dashboard pribadi — Tentang Aku, Status, Skills & Level.">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="corner-deco tl"></div>
+<div class="corner-deco tr"></div>
+<div class="corner-deco bl"></div>
+<div class="corner-deco br"></div>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- Hamburger / Dynamic Close Button -->
+<button class="menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- Theme Toggle -->
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="avatar">
+      <img src="foto.jpg" alt="Profile" onerror="this.style.display='none'">
+      <span class="avatar-text">YN</span>
+    </div>
+    <div class="user-info">
+      <div class="name">YOUR_NAME</div>
+      <div class="handle">@yourhandle · Online</div>
+    </div>
+  </div>
+
+  <!-- NAVIGATE -->
+  <div class="nav-section">
+    <div class="nav-section-title">NAVIGATE</div>
+    <a href="index.html" class="nav-item" data-page="index.html" onclick="closeSidebar()">
+      <span class="nav-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </span>
+      Dashboard
+    </a>
+    <a href="sosial.html" class="nav-item" data-page="sosial.html" onclick="closeSidebar()">
+      <span class="nav-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+      </span>
+      Sosial & Game
+    </a>
+    <a href="donasi.html" class="nav-item" data-page="donasi.html" onclick="closeSidebar()">
+      <span class="nav-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </span>
+      Donasi
+    </a>
+  </div>
+
+  <!-- STATUS -->
+  <div class="nav-section">
+    <div class="nav-section-title">STATUS</div>
+    <div style="padding: 10px 20px 14px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;">
+        <span style="color:var(--text3);font-family:'Share Tech Mono',monospace">MOOD</span>
+        <span style="color:#00ff88;font-weight:600">Good Vibes ✓</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;">
+        <span style="color:var(--text3);font-family:'Share Tech Mono',monospace">COFFEE</span>
+        <span style="color:var(--accent2);font-weight:600">3x today ☕</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;">
+        <span style="color:var(--text3);font-family:'Share Tech Mono',monospace">UPTIME</span>
+        <span style="color:var(--accent);font-weight:600" id="uptime">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="nav-section">
+    <div class="nav-section-title">QUICK LINKS</div>
+    <a href="#" class="nav-item">
+      <span class="nav-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+      Instagram
+    </a>
+    <a href="#" class="nav-item">
+      <span class="nav-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.48a8.19 8.19 0 004.79 1.52V7.52a4.85 4.85 0 01-1.02-.83z"/></svg></span>
+      TikTok
+    </a>
+    <a href="#" class="nav-item">
+      <span class="nav-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
+      GitHub
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-clock-wrap">
+      v1.0.0 — Made with ♥<br>
+      <span id="clock" style="color:var(--accent)"></span>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main class="main">
+
+  <!-- ─── HERO + PROFILE FRAME ─── -->
+  <section class="hero" id="about">
+
+    <!-- Circular Profile Frame -->
+    <div class="profile-frame-container">
+      <div class="profile-frame-outer">
+        <div class="profile-frame-ring"></div>
+        <div class="profile-frame">
+          <img src="foto.jpg" alt="Profile Photo"
+               onerror="this.style.display='none'; document.getElementById('profileInitials').style.display='flex';">
+          <div class="profile-frame-initials" id="profileInitials" style="display:none;">YN</div>
+        </div>
+        <div class="profile-online-badge"></div>
+      </div>
+    </div>
+
+    <div class="hero-glitch">YOUR_NAME</div>
+    <div class="hero-sub">// Personal Space · Est. 2024</div>
+    <p class="hero-tagline">Selamat datang di dashboard pribadiku. Di sini kamu bisa menemukan serba-serbi tentang aku. 👾</p>
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      ONLINE · SEMARANG, ID · <span id="localtime">—</span>
+    </div>
+  </section>
+
+  <!-- ─── ROW 1: TENTANG AKU + STATUS SAAT INI ─── -->
+  <div class="section-label">PROFIL & STATUS</div>
+  <div class="cards-grid">
+
+    <!-- TENTANG AKU -->
+    <div class="card" id="about-card">
+      <div class="card-header">
+        <div class="card-icon">👾</div>
+        <div class="card-title">Tentang Aku</div>
+      </div>
+      <p class="about-text">Halo! Aku <strong style="color:var(--accent)">YOUR_NAME</strong> — seorang [Mahasiswa/Developer/Kreator] yang suka ngulik hal baru, main game, dan dengerin musik random jam 2 pagi. ☕</p>
+      <p class="about-text" style="margin-bottom:0">Kalau mau connect, cek halaman Sosial & Game atau kirimin aku pesan kapan aja!</p>
+      <div class="tag-wrap">
+        <span class="tag">🎮 Gamer</span>
+        <span class="tag">💻 Coder</span>
+        <span class="tag">🎵 Musik</span>
+        <span class="tag">☕ Coffee Addict</span>
+        <span class="tag">🌙 Night Owl</span>
+        <span class="tag">🔥 Hustler</span>
+      </div>
+      <div class="now-playing" id="nowPlaying">
+        <div class="np-disc" id="disc">🎵</div>
+        <div class="np-info">
+          <div class="np-title" id="npTitle">Lofi Hip-Hop Mix</div>
+          <div class="np-artist" id="npArtist">ChilledCow · Spotify</div>
+        </div>
+        <button class="np-ctrl" onclick="togglePlay()">▶</button>
+      </div>
+    </div>
+
+    <!-- STATUS SAAT INI -->
+    <div class="card" id="status">
+      <div class="card-header">
+        <div class="card-icon">📡</div>
+        <div class="card-title">Status Saat Ini</div>
+      </div>
+      <div class="status-list">
+        <div class="status-item">
+          <span class="status-key">KONEKSI</span>
+          <span class="status-val online">● Online</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">AKTIVITAS</span>
+          <span class="status-val gaming">🎮 Gaming</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">MOOD</span>
+          <span class="status-val" style="color:#ffaa00">😎 Vibe-ing</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">LOKASI</span>
+          <span class="status-val">Semarang, ID 📍</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">TASK</span>
+          <span class="status-val busy">📝 Ada Deadline</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">SEMESTER</span>
+          <span class="status-val">Sem. 4 · 2024</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">PING</span>
+          <span class="status-val online" id="ping">— ms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ROW 2: SKILLS + QUOTE ─── -->
+  <div class="section-label">KEMAMPUAN & INSPIRASI</div>
+  <div class="cards-grid">
+
+    <!-- SKILLS & LEVEL -->
+    <div class="card" id="skills">
+      <div class="card-header">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Skills & Level</div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span class="progress-name">Web Development</span>
+          <span class="progress-pct">78%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" data-width="78%"></div></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span class="progress-name">Game Sense (FPS)</span>
+          <span class="progress-pct">85%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span class="progress-name">Desain Grafis</span>
+          <span class="progress-pct">60%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" data-width="60%"></div></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span class="progress-name">Ngoding (Python/JS)</span>
+          <span class="progress-pct">70%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" data-width="70%"></div></div>
+      </div>
+      <div class="progress-wrap" style="margin-bottom:0">
+        <div class="progress-label">
+          <span class="progress-name">Overthinking</span>
+          <span class="progress-pct">99%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" data-width="99%"></div></div>
+      </div>
+    </div>
+
+    <!-- QUOTE HARI INI -->
+    <div class="card quote-card" id="quote-card">
+      <div class="card-header">
+        <div class="card-icon">✨</div>
+        <div class="card-title">Kata-Kata Hari Ini</div>
+      </div>
+      <div id="quoteContent">
+        <div class="quote-loading">
+          <div class="dot-pulse">
+            <span></span><span></span><span></span>
+          </div>
+          <span style="margin-left:8px;font-size:12px;color:var(--text3);font-family:'Share Tech Mono',monospace">Mengambil kata-kata hari ini...</span>
+        </div>
+      </div>
+      <p class="quote-text" id="quoteText" style="display:none"></p>
+      <p class="quote-author" id="quoteAuthor" style="display:none"></p>
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">
+        <button onclick="loadDailyQuote()" style="background:none;border:none;color:var(--text3);cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;padding:0;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text3)'">
+          ↺ Quote baru
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MEME / KONTEN HARIAN ─── -->
+  <div class="section-label">MEME OF THE DAY</div>
+  <div class="meme-card">
+    <div class="card-header">
+      <div class="card-icon">😂</div>
+      <div class="card-title">Meme Harian</div>
+    </div>
+    <div class="meme-img-container">
+      <span class="meme-loading-text" id="memeLoading">
+        <span class="dot-pulse" style="display:inline-flex;gap:4px;align-items:center;">
+          <span></span><span></span><span></span>
+        </span>
+        &nbsp;Memuat meme...
+      </span>
+      <img id="memeImg" alt="Meme Harian" style="display:none; width:100%; max-height:420px; object-fit:contain; border-radius:8px;">
+    </div>
+    <p class="meme-title" id="memeTitle"></p>
+    <p class="meme-source" id="memeSource"></p>
+    <button class="meme-refresh-btn" onclick="refreshMeme()">↺ Meme Lain</button>
+  </div>
+
+  <footer>
+    <div>[ SYSTEM ONLINE ] · YOUR_NAME · Semarang, Central Java</div>
+    <div style="margin-top:6px;color:var(--accent)">Built with passion &amp; too much caffeine ☕</div>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+<script>
+  // Override loadDailyQuote to show/hide loading state
+  const _origLoadQuote = loadDailyQuote;
+  async function loadDailyQuote() {
+    const quoteEl = document.getElementById('quoteText');
+    const authorEl = document.getElementById('quoteAuthor');
+    const contentEl = document.getElementById('quoteContent');
+    if (!quoteEl) return;
+
+    if (contentEl) contentEl.style.display = 'block';
+    if (quoteEl) quoteEl.style.display = 'none';
+    if (authorEl) authorEl.style.display = 'none';
+
+    const fallbackQuotes = [
+      { content: "Hidup bukan tentang menemukan dirimu sendiri. Hidup tentang menciptakan dirimu sendiri.", author: "George Bernard Shaw" },
+      { content: "Sukses bukan kunci kebahagiaan. Kebahagiaan adalah kunci sukses.", author: "Albert Schweitzer" },
+      { content: "Jangan berhenti saat kamu lelah. Berhentilah saat kamu selesai.", author: "Unknown" },
+      { content: "Setiap ahli pernah menjadi pemula. Jangan takut untuk memulai.", author: "Helen Hayes" },
+      { content: "Hal-hal besar tidak dilakukan oleh impuls, tapi oleh serangkaian hal-hal kecil yang disatukan.", author: "Vincent Van Gogh" },
+      { content: "Keberanian bukan berarti tidak ada rasa takut, tapi melakukan sesuatu meskipun takut.", author: "Ambrose Redmoon" },
+      { content: "Kamu tidak perlu menjadi luar biasa untuk memulai, tapi kamu harus memulai untuk menjadi luar biasa.", author: "Zig Ziglar" },
+    ];
+
+    try {
+      const res = await fetch('https://api.quotable.io/random?maxLength=120');
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      if (contentEl) contentEl.style.display = 'none';
+      if (quoteEl) { quoteEl.textContent = '"' + data.content + '"'; quoteEl.style.display = 'block'; }
+      if (authorEl) { authorEl.textContent = '— ' + data.author; authorEl.style.display = 'block'; }
+    } catch (_) {
+      const fallback = fallbackQuotes[new Date().getDay() % fallbackQuotes.length];
+      if (contentEl) contentEl.style.display = 'none';
+      if (quoteEl) { quoteEl.textContent = '"' + fallback.content + '"'; quoteEl.style.display = 'block'; }
+      if (authorEl) { authorEl.textContent = '— ' + fallback.author; authorEl.style.display = 'block'; }
+    }
+  }
+
+  function refreshMeme() {
+    const imgEl = document.getElementById('memeImg');
+    const loadingEl = document.getElementById('memeLoading');
+    const titleEl = document.getElementById('memeTitle');
+    const srcEl = document.getElementById('memeSource');
+    if (imgEl) imgEl.style.display = 'none';
+    if (loadingEl) { loadingEl.innerHTML = '<span class="dot-pulse" style="display:inline-flex;gap:4px;align-items:center;"><span></span><span></span><span></span></span>&nbsp;Memuat meme...'; loadingEl.style.display = 'block'; }
+    if (titleEl) titleEl.textContent = '';
+    if (srcEl) srcEl.textContent = '';
+    loadMeme();
+  }
+</script>
+</body>
+</html>
